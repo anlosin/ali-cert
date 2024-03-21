@@ -110,7 +110,8 @@ func CreateAuthFile(fl string, syspath string, tt string) (err error) {
 }
 
 func writer(s string, n string) (err error) {
-	file, err := os.Create(n)
+	//file, err := os.Create(n)
+	file, err := os.OpenFile(n, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		return err
 	}
